@@ -64,21 +64,6 @@ steps:
 
     testResultsFiles: '**/TEST-*.xml'
 
-   
 
-  
 
-- task: PublishBuildArtifacts@1
-
-  displayName: 'Publish Artifact: extent Reports'
-
-  inputs:
-
-    PathtoPublish: '$(System.defaultworkingdirectory)/test-output/ExtentReport.html' #path to the test result folder(ie. html:target/home-page-html)
-
-    ArtifactName: ExtentReport.html
-
- 
-
-- 
 
