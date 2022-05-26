@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [FoxRestAPISuite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.Edenred.utilities.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="FoxRestAPITest(failed)">
+    <classes>
+      <class name="com.Edenred.testCases.TC001_REG_user">
+        <methods>
+          <include name="checkResposeBody"/>
+          <include name="checkcontentEncoding"/>
+          <include name="checkstatusLine"/>
+          <include name="tearDown"/>
+          <include name="createEmployee"/>
+          <include name="checkStatusCode"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.Edenred.testCases.TC001_REG_user -->
+      <class name="com.Edenred.testCases.TC002_LOGIN_user">
+        <methods>
+          <include name="checkstatusLine"/>
+          <include name="tearDown"/>
+          <include name="getEmployeeData"/>
+          <include name="checkContentType"/>
+          <include name="checkStatusCode"/>
+          <include name="setup"/>
+          <include name="checkResposeBody"/>
+        </methods>
+      </class> <!-- com.Edenred.testCases.TC002_LOGIN_user -->
+    </classes>
+  </test> <!-- FoxRestAPITest(failed) -->
+</suite> <!-- Failed suite [FoxRestAPISuite] -->
