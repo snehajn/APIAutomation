@@ -6,7 +6,27 @@
 
  
 
+resources:
+
+  pipelines:
+
+    - pipeline: binaries
+
+      source: "CI - Binaries"
+
+      trigger:
+
+        enabled: true
+
+        branches:
+
+          include:
+          
+            - Release
+
+            - develop
 trigger:
+
 
     branches:
 
