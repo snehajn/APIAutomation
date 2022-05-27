@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.testng.annotations.BeforeClass;
 
+import com.Edenred.Objects.LoginCred;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -14,7 +16,7 @@ public class TestBase {
 	
 	public static RequestSpecification httpRequest;
 	public static Response response;
-	
+	public  LoginCred testuser ;
 	
 	public Logger logger;
 	

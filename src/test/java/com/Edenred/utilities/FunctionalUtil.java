@@ -52,6 +52,18 @@ public class FunctionalUtil{
 		int statusCode = response.getStatusCode(); 
 		Assert.assertEquals(statusCode, expectedstatusCode);
 	}
+	
+	public void checkStatusCode200(Response response)
+	{
+		int statusCode = response.getStatusCode(); 
+		Assert.assertEquals(statusCode, 200);
+	}
+	
+	public void checkStatusCode400(Response response)
+	{
+		int statusCode = response.getStatusCode(); 
+		Assert.assertEquals(statusCode, 400);
+	}
 	//Test Case - Response Time check
 	@Test
 	public void checkResponseTime(Response response)
