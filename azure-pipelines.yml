@@ -13,8 +13,7 @@ resources:
     # Required only if the source pipeline is in another project
     trigger: true # Run app-ci pipeline when any run of security-lib-ci completes
 
-steps:
-- bash: echo "EdenRedAPIAutomation runs after CI - Binaries"
+
 
 trigger:
 
