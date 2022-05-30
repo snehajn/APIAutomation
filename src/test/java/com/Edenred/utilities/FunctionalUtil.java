@@ -56,7 +56,7 @@ public class FunctionalUtil{
 	public void checkStatusCode200(Response response)
 	{
 		int statusCode = response.getStatusCode(); 
-		Assert.assertEquals(statusCode, 200);
+		Assert.assertEquals(statusCode, 200,"status code is matching");
 	}
 	
 	public void checkStatusCode400(Response response)

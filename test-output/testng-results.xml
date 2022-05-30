@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="EdenRedRestAPISuite" duration-ms="18086" started-at="2022-05-30T13:29:21Z" finished-at="2022-05-30T13:29:39Z">
+  <suite name="EdenRedRestAPISuite" duration-ms="17316" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:52:10Z">
     <groups>
     </groups>
-    <test name="Edenred" duration-ms="18086" started-at="2022-05-30T13:29:21Z" finished-at="2022-05-30T13:29:39Z">
+    <test name="Edenred" duration-ms="17316" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:52:10Z">
       <class name="com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@1e6454ec]" name="setup" is-config="true" duration-ms="30" started-at="2022-05-30T13:29:21Z" finished-at="2022-05-30T13:29:21Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@1e6454ec]" name="setup" is-config="true" duration-ms="25" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:51:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC01MoneyTransfer_BankTransfer()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@1e6454ec]" name="TC01MoneyTransfer_BankTransfer" duration-ms="17884" started-at="2022-05-30T13:29:21Z" finished-at="2022-05-30T13:29:39Z">
+        <test-method status="PASS" signature="TC01MoneyTransfer_BankTransfer()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@1e6454ec]" name="TC01MoneyTransfer_BankTransfer" duration-ms="17160" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:52:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC01MoneyTransfer_BankTransfer -->
