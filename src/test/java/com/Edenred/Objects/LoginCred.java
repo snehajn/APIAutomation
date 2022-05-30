@@ -15,6 +15,7 @@ public enum LoginCred {
     private String phone;
     private String password;
     private String user;
+    private String token;
 
    
 
@@ -47,5 +48,12 @@ public enum LoginCred {
     public String getPwd() {
         return password;
     }
+    public void setToken(String token) {
+    	this.token =token;
+    }
+    public String getToken() {
+        return token;
+    }
+
 
 }

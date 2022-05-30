@@ -3,7 +3,9 @@
 package com.Edenred.testCases.MoneyTransfer;
 
 import com.Edenred.testCases.UserLogin;
+import com.Edenred.utilities.AccessToken;
 import com.Edenred.utilities.FunctionalUtil;
+import com.Edenred.utilities.RestApi;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -14,8 +16,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.Edenred.Objects.*;
-import com.Edenred.apiUtils.AccessToken;
-import com.Edenred.apiUtils.RestApi;
 
 public class Money_Transfer{
 	
@@ -27,30 +27,33 @@ public class Money_Transfer{
 	Response response;
 	RequestSpecBuilder requestSpecification = new RequestSpecBuilder();
 	
-	
-	Money_Transfer(UserLogin userid){
+	public Money_Transfer(LoginCred user){
+		AccessToken=Token.getAccessToken(user.getPhone(), user.getPwd());
 		
 	}
-		
+	
 	@Test
-	public  Response Get_Beneficiary_BankTransfer() throws InterruptedException {
+	public  Response Get_Beneficiary_BankTransfer(String UserID) throws InterruptedException {
 		
 		
-		UserLogin userid= new UserLogin(LoginCred.User1.getPhone(),LoginCred.User1.getPwd());
-		UserID= userid.GetUserID();
-		
+		/*
+		 * UserLogin userid= new
+		 * UserLogin(LoginCred.User1.getPhone(),LoginCred.User1.getPwd()); UserID=
+		 * userid.GetUserID();
+		 */
 		requestSpecification.setBasePath(APIEndPoint.Money_Transfer_Beneficiary);
 		requestSpecification.setAccept("text/plain");
-		requestSpecification.addHeader("Authorization","Bearer " + userid.getAccessToken());
+		requestSpecification.addHeader("Authorization","Bearer " + AccessToken);
 		requestSpecification.addPathParam("userId", UserID);
 		requestSpecification.addQueryParam("transferMethod", "BANKTRANSFER");
 		
-		response = RestApi.get(requestSpecification);
-		return response;
+		Response response1 = RestApi.get(requestSpecification);
+		System.out.println("response beneficiau"+response1.getBody().asString());
+		return response1;
 		
 	}
 	
-	public void get_Beneficiary_CashPickup() throws InterruptedException {
+	public Response get_Beneficiary_CashPickup() throws InterruptedException {
 		
 		UserLogin userid= new UserLogin(LoginCred.User1.getPhone(),LoginCred.User1.getPwd());
 		UserID= userid.GetUserID();
@@ -58,17 +61,18 @@ public class Money_Transfer{
 		
 		requestSpecification.setBasePath(APIEndPoint.Money_Transfer_Beneficiary);
 		requestSpecification.setAccept("text/plain");
-		requestSpecification.addHeader("Authorization","Bearer " + userid.getAccessToken());
+		requestSpecification.addHeader("Authorization","Bearer " + AccessToken);
 		requestSpecification.addPathParam("userId", UserID);
 		requestSpecification.addQueryParam("transferMethod", "CASHPICKUP");
 		
 		response = RestApi.get(requestSpecification);
+		return response;
 		
 		
 	}
 	
 
-	public void get_Fxrates() throws InterruptedException {
+	public Response get_Fxrates(String UserID,String toCurrency,String amount,String transferMethod) throws InterruptedException {
 		
 		UserLogin userid= new UserLogin(LoginCred.User1.getPhone(),LoginCred.User1.getPwd());
 		UserID= userid.GetUserID();
@@ -77,11 +81,13 @@ public class Money_Transfer{
 		requestSpecification.setBasePath(APIEndPoint.fx);
 		requestSpecification.setAccept("text/plain");
 		requestSpecification.addHeader("Authorization","Bearer " + userid.getAccessToken());
-		//requestSpecification.addPathParameter("userId", UserID);
-		requestSpecification.addQueryParam("transferMethod", "DIRECTTRANSFER");
+		requestSpecification.addPathParam("userId", UserID);
+		requestSpecification.addPathParam("toCurrency", toCurrency);
+		requestSpecification.addPathParam("amount", amount);
+		requestSpecification.addQueryParam("transferMethod", transferMethod);
 		
 		response = RestApi.get(requestSpecification);
-		
+		return response;
 		
 	}
 	public void get_Beneficiary_DirectTransfer() throws InterruptedException {
@@ -101,11 +107,20 @@ public class Money_Transfer{
 		
 	}
 	@Test
-	public void get_eligibility(String transfermethod, String Countrycode, double amount) throws InterruptedException {
+	public Response get_eligibility(String UserID,String transfermethod, String Countrycode, double amount) throws InterruptedException {
 
 		UserLogin userid= new UserLogin(LoginCred.User1.getPhone(),LoginCred.User1.getPwd());
 		UserID= userid.GetUserID();
 		
+		
+		/*
+		
+		
+		transfermethod
+		Countrycode
+		amount
+		
+		*/
 		requestSpecification.setBasePath(APIEndPoint.eligibility);
 		requestSpecification.setAccept("text/plain");
 		requestSpecification.addHeader("Authorization","Bearer " + userid.getAccessToken());
@@ -117,6 +132,6 @@ public class Money_Transfer{
 
 		
 		response = RestApi.get(requestSpecification);
-		
+		return response;
 	}
 }

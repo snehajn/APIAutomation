@@ -1,4 +1,4 @@
-package com.Edenred.apiUtils;
+package com.Edenred.utilities;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;

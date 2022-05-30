@@ -15,9 +15,10 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import com.Edenred.apiUtils.*;
 
+import com.Edenred.utilities.AccessToken;
 import com.Edenred.utilities.FunctionalUtil;
+import com.Edenred.utilities.RestApi;
 public class UserLogin extends TestBase{
 
 	RequestSpecification httpRequest;

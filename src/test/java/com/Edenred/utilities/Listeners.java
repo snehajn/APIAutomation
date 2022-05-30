@@ -20,7 +20,7 @@ public class Listeners extends TestListenerAdapter
 	public void onStart(ITestContext testContext)
 	{
 		//specify location of the report
-		htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+ "/Reports/foxReport.html");
+		htmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+ "/Reports/EdenRedAPI.html");
 				
 		htmlReporter.config().setDocumentTitle("Automation Report"); // Tile of report
 		htmlReporter.config().setReportName("Rest API Testing Report"); // name of the report
@@ -28,10 +28,10 @@ public class Listeners extends TestListenerAdapter
 		
 		extent=new ExtentReports();
 		extent.attachReporter(htmlReporter);
-		extent.setSystemInfo("Project Name","FOX Database API");
+		extent.setSystemInfo("Project Name","EDEDRED  API");
 		extent.setSystemInfo("Host name","localhost");
 		extent.setSystemInfo("Environemnt","QA");
-		extent.setSystemInfo("user","hemant");
+		extent.setSystemInfo("user","SNEHA");
 			
 	}
 	
@@ -41,6 +41,7 @@ public class Listeners extends TestListenerAdapter
 		test=extent.createTest(result.getName()); // create new entry in the report
 				
 		test.log(Status.PASS, "Test Case PASSED IS " + result.getName());
+		
 	}
 	
 	public void onTestFailure(ITestResult result)
@@ -50,6 +51,12 @@ public class Listeners extends TestListenerAdapter
 		test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getName()); // to add name in extent report
 		test.log(Status.FAIL, "TEST CASE FAILED IS " + result.getThrowable()); // to add error/exception in extent report
 	
+	}
+	
+	public void onTestS(ITestResult result)
+	{
+		test=extent.createTest(result.getName()); // create new entry in the report
+		test.log(Status.SKIP, "Test Case SKIPPED IS " + result.getName());
 	}
 	
 	public void onTestSkipped(ITestResult result)

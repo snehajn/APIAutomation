@@ -1,4 +1,4 @@
-package com.Edenred.apiUtils;
+package com.Edenred.utilities;
 
 /* -----------------------------------------------------------------------
    - ** Rest API Testing Framework using RestAssured **
