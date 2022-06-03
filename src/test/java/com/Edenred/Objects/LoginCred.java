@@ -9,7 +9,7 @@ public enum LoginCred {
 
 
     User1("00971545091714", "test123"),
-    user2("89888", "test123"),
+    user2("00971545092159", "test123"),
    ;
 
     private String phone;

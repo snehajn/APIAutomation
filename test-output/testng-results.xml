@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="EdenRedRestAPISuite" duration-ms="17316" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:52:10Z">
+  <suite name="Default suite" duration-ms="21862" started-at="2022-06-03T09:25:36Z" finished-at="2022-06-03T09:25:58Z">
     <groups>
     </groups>
-    <test name="Edenred" duration-ms="17316" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:52:10Z">
+    <test name="Default test" duration-ms="21862" started-at="2022-06-03T09:25:36Z" finished-at="2022-06-03T09:25:58Z">
       <class name="com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@1e6454ec]" name="setup" is-config="true" duration-ms="25" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:51:53Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@27e47833]" name="setup" is-config="true" duration-ms="40" started-at="2022-06-03T09:25:36Z" finished-at="2022-06-03T09:25:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC01MoneyTransfer_BankTransfer()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@1e6454ec]" name="TC01MoneyTransfer_BankTransfer" duration-ms="17160" started-at="2022-05-30T13:51:53Z" finished-at="2022-05-30T13:52:10Z">
+        <test-method status="PASS" signature="TC01MoneyTransfer_BankTransfer()[pri:0, instance:com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy@27e47833]" name="TC01MoneyTransfer_BankTransfer" duration-ms="21809" started-at="2022-06-03T09:25:36Z" finished-at="2022-06-03T09:25:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC01MoneyTransfer_BankTransfer -->
       </class> <!-- com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy -->
-    </test> <!-- Edenred -->
-  </suite> <!-- EdenRedRestAPISuite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

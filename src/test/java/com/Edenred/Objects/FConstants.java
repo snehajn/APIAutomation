@@ -1,6 +1,9 @@
 package com.Edenred.Objects;
 
-public class Constants {
+import java.util.HashMap;
+import java.util.Map;
+
+public class FConstants {
 
 	 public static final String IndianCurrency = "INR";
 	 public static final String NepalCurrency = "NEPAL";
@@ -9,6 +12,14 @@ public class Constants {
 	 public static final String PakistanCurrency = "PKR";
 	 public static final String PhillipinesCurrency = "PHP";
 	 public static final String BankTransfer = "BANKTRANSFER";
+	 public static  String Token ;
+	 
+	 public static Map currency = new HashMap();
+	  
+	 
+	 
+
+	 
 	    
 	    
 	    

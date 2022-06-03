@@ -7,6 +7,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import java.io.File;
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
@@ -91,7 +92,47 @@ public class RestApi {
 			e.printStackTrace();
 		}
 	  
-	   System.out.println("bne"+response.getBody().asString());
+	   System.out.println("bne"+response.prettyPrint().toString());
+
+   	
+   	return response;
+   }
+    
+
+    public static  Response post(RequestSpecBuilder req, String json){
+    	File jsonDataInFile = new File("src/Resources/AuthPayload.json");
+    	String jsonstring ="{\r\n"
+    			+ "    \"beneficiaryId\": \"d5772196-b3e0-ec11-b656-0050f2f182b8\",\r\n"
+    			+ "    \"sendAmount\": {\r\n"
+    			+ "        \"amount\": 25,\r\n"
+    			+ "        \"currency\": \"AED\"\r\n"
+    			+ "    },\r\n"
+    			+ "    \"receiveAmount\": {\r\n"
+    			+ "        \"amount\": 25,\r\n"
+    			+ "        \"currency\": \"INR\"\r\n"
+    			+ "    },\r\n"
+    			+ "    \"conversionRate\": 24.243,\r\n"
+    			+ "    \"feeAmount\": 5.2,\r\n"
+    			+ "    \"referralCode\": \"ff\"\r\n"
+    			+ "}";
+    	RequestSpecification  specreq= req.build();
+		 try {
+			response = 
+				    RestAssured.given()
+				    .spec(specreq).log().ifValidationFails()
+					.baseUri("https://eae-c3pay-web-a.azurewebsites.net/")
+					.when()
+					.body(json)
+					.post()
+		
+				
+					.then().assertThat().statusCode(200).extract().response();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  
+	   System.out.println("bne"+response.prettyPrint().toString());
 
    	
    	return response;

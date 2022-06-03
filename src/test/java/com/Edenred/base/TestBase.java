@@ -2,13 +2,14 @@
 package com.Edenred.base;
 
 import org.apache.log4j.Level;
+import com.Edenred.Objects.*;
 
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.testng.annotations.BeforeClass;
 
-import com.Edenred.Objects.LoginCred;
+import com.Edenred.Objects.*;
 
 import com.Edenred.utilities.*;
 
@@ -21,13 +22,14 @@ public class TestBase {
 	public static RequestSpecification httpRequest;
 	public static Response response;
 	public  LoginCred testuser ;
-	public String token;
+	//public String token;
 	public Logger logger;
+	public String baseURI="https://eae-c3pay-web-a.azurewebsites.net/" ;
 	
 	@BeforeClass
 	public void setup(){
 		
-		logger=Logger.getLogger("Fox API");//added Logger
+		logger=Logger.getLogger("EDENRED API");//added Logger
 		PropertyConfigurator.configure("Log4j.properties"); //added logger
 		logger.setLevel(Level.DEBUG);
 		
@@ -40,10 +42,10 @@ public class TestBase {
 			
 		
 		String path= "api/User/by-phone-number/"+user.getPhone();
-		String token= Token.getAccessToken(user.getPhone(), user.getPwd());
-		response = RestApi.get(path,token);
+		FConstants.Token= Token.getAccessToken(user.getPhone(), user.getPwd());
+		response = RestApi.get(path,FConstants.Token);
 				   
-	   System.out.println(response.getBody().asString());
+	    System.out.println(response.getBody().asString());
 	   
 	   
 	   
@@ -55,17 +57,18 @@ public class TestBase {
 		return userID;
 		
 	}
-	public String getToken(LoginCred user) {
+
+	public String GetUserPojo(LoginCred user) {
 		
 		AccessToken Token =new AccessToken() ;
 		RestAssured.baseURI = "https://eae-c3pay-web-a.azurewebsites.net/";
 			
 		
 		String path= "api/User/by-phone-number/"+user.getPhone();
-		String token= Token.getAccessToken(user.getPhone(), user.getPwd());
-		response = RestApi.get(path,token);
+		FConstants.Token= Token.getAccessToken(user.getPhone(), user.getPwd());
+		response = RestApi.get(path,FConstants.Token);
 				   
-	   System.out.println(response.getBody().asString());
+	    System.out.println(response.getBody().asString());
 	   
 	   
 	   
@@ -76,6 +79,19 @@ public class TestBase {
 	
 		return userID;
 		
+	}
+	
+	
+	public void generateToken(LoginCred user) {
+		
+		AccessToken Token =new AccessToken() ;
+		RestAssured.baseURI = "https://eae-c3pay-web-a.azurewebsites.net/";
+			
+		
+		//String path= "api/User/by-phone-number/"+user.getPhone();
+		FConstants.Token= Token.getAccessToken(user.getPhone(), user.getPwd());
+		
+	   
 	}
 	
 	

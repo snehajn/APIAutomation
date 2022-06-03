@@ -7,7 +7,7 @@
 </listeners>
 	<test thread-count="5" name="Edenred">
 		<classes>
-			<class name="com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy" />
+			<!-- <class name="com.Edenred.testCases.MoneyTransfer.TC_Money_Transfer_Happy" />-->
 			<class name="com.Edenred.testCases.UserLogin" />
 		</classes>
 	</test> <!-- Test -->

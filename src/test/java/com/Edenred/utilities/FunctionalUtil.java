@@ -1,7 +1,9 @@
 package com.Edenred.utilities; 
 import org.testng.Assert;
+//import org.json.JSONObject;
 import org.testng.annotations.Test;
 
+//import apiVerifications.JSONObject;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -46,18 +48,29 @@ public class FunctionalUtil{
 		Assert.assertEquals(statusCode, 200);
 	}
 	
+	public  Boolean checkStatusCode200(Response response)
+	{
+		int statusCode = response.getStatusCode(); 
+		if (statusCode==200)
+			return true;
+		else 
+			return false;
+	}
 	
+	/*
+	 * public void checkStatusCode(Response response,int expectedstatusCode) {
+	 * JSONParser jsonParser = new JSONParser(); JSONObject jsonObject =
+	 * (JSONObject) jsonParser.parse(reader); JSONObject jsonObject1 = (JSONObject)
+	 * jsonObject.get("products"); JSONObject jsonObject2 =
+	 * (JSONObject)jsonObject1.get("productsApp15"); }
+	 */
 	public void checkStatusCode(Response response,int expectedstatusCode)
 	{
 		int statusCode = response.getStatusCode(); 
 		Assert.assertEquals(statusCode, expectedstatusCode);
 	}
 	
-	public void checkStatusCode200(Response response)
-	{
-		int statusCode = response.getStatusCode(); 
-		Assert.assertEquals(statusCode, 200,"status code is matching");
-	}
+	
 	
 	public void checkStatusCode400(Response response)
 	{
@@ -95,5 +108,17 @@ public class FunctionalUtil{
 		String contentType = response.header("Content-Type");
 		Assert.assertEquals(contentType, "application/json; charset=utf-8");
 	}
+	
+	
+	/*
+	 * public static void responseKeyValidationFromJsonObject(Response response,
+	 * String key) { try { JSONObject json = new
+	 * JSONObject(response.getBody().asString()); if(json.has(key) &&
+	 * json.get(key)!= null) { Assert.assertTrue(true, "The Response contains key -"
+	 * + key); }else { Assert.assertTrue(false, "The Response doesnt contain key -"
+	 * + key); } } catch (Exception e) {
+	 * 
+	 * } }
+	 */
 }
 

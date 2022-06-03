@@ -1,0 +1,14 @@
+{
+  "beneficiaryId":"d72385bd-d4df-ec11-b656-0050f2f182b8",
+  "sendAmount": {
+    "amount": 200,
+    "currency": "AED"
+  },
+  "receiveAmount": {
+    "amount": 200,
+    "currency": "INR"
+  },
+  "conversionRate": 20.507,
+  "feeAmount": 0,
+  "referralCode": "ff"
+}
