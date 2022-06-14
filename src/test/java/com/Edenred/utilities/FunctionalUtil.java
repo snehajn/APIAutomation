@@ -1,5 +1,6 @@
 package com.Edenred.utilities; 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 //import org.json.JSONObject;
 import org.testng.annotations.Test;
 
@@ -8,6 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+@Listeners(ExtentListeners.class)
 public class FunctionalUtil{
 	
 	public String AccessToken;
@@ -67,7 +69,7 @@ public class FunctionalUtil{
 	public void checkStatusCode(Response response,int expectedstatusCode)
 	{
 		int statusCode = response.getStatusCode(); 
-		Assert.assertEquals(statusCode, expectedstatusCode);
+		Assert.assertEquals(statusCode, expectedstatusCode, "The Error response status code is 400  ");
 	}
 	
 	

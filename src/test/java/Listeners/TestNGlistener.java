@@ -4,7 +4,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class TestNGlistener implements ITestListener {
+public class TestNGlistener implements ITestListener  {
 
 	@Override
 	public void onTestStart(ITestResult result) {
@@ -44,6 +44,7 @@ public class TestNGlistener implements ITestListener {
 		
 	}
 
+	
 	@Override
 	public void onFinish(ITestContext context) {
 		// TODO Auto-generated method stub

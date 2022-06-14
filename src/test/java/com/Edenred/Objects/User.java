@@ -1,5 +1,4 @@
 
-
 package com.Edenred.Objects;
 
 import java.util.HashMap;
@@ -49,7 +48,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 "rewardedForReferral",
 "moneyTransferReferralCount",
 "passportStatus",
-"isVerified"
+"isVerified",
+"spendPolicyDetails",
+"autoplayMoneyTransferVideo"
 })
 @Generated("jsonschema2pojo")
 public class User {
@@ -117,7 +118,7 @@ private String referralProgramVideoURL;
 @JsonProperty("referralProgramVideoThumbnailURL")
 private String referralProgramVideoThumbnailURL;
 @JsonProperty("referralCode")
-private Object referralCode;
+private String referralCode;
 @JsonProperty("rewardedForReferral")
 private Boolean rewardedForReferral;
 @JsonProperty("moneyTransferReferralCount")
@@ -126,6 +127,10 @@ private Integer moneyTransferReferralCount;
 private String passportStatus;
 @JsonProperty("isVerified")
 private Boolean isVerified;
+@JsonProperty("spendPolicyDetails")
+private SpendPolicyDetails spendPolicyDetails;
+@JsonProperty("autoplayMoneyTransferVideo")
+private Boolean autoplayMoneyTransferVideo;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -440,12 +445,12 @@ this.referralProgramVideoThumbnailURL = referralProgramVideoThumbnailURL;
 }
 
 @JsonProperty("referralCode")
-public Object getReferralCode() {
+public String getReferralCode() {
 return referralCode;
 }
 
 @JsonProperty("referralCode")
-public void setReferralCode(Object referralCode) {
+public void setReferralCode(String referralCode) {
 this.referralCode = referralCode;
 }
 
@@ -489,6 +494,26 @@ public void setIsVerified(Boolean isVerified) {
 this.isVerified = isVerified;
 }
 
+@JsonProperty("spendPolicyDetails")
+public SpendPolicyDetails getSpendPolicyDetails() {
+return spendPolicyDetails;
+}
+
+@JsonProperty("spendPolicyDetails")
+public void setSpendPolicyDetails(SpendPolicyDetails spendPolicyDetails) {
+this.spendPolicyDetails = spendPolicyDetails;
+}
+
+@JsonProperty("autoplayMoneyTransferVideo")
+public Boolean getAutoplayMoneyTransferVideo() {
+return autoplayMoneyTransferVideo;
+}
+
+@JsonProperty("autoplayMoneyTransferVideo")
+public void setAutoplayMoneyTransferVideo(Boolean autoplayMoneyTransferVideo) {
+this.autoplayMoneyTransferVideo = autoplayMoneyTransferVideo;
+}
+
 @JsonAnyGetter
 public Map<String, Object> getAdditionalProperties() {
 return this.additionalProperties;
@@ -497,6 +522,174 @@ return this.additionalProperties;
 @JsonAnySetter
 public void setAdditionalProperty(String name, Object value) {
 this.additionalProperties.put(name, value);
+}
+
+@Override
+public String toString() {
+StringBuilder sb = new StringBuilder();
+sb.append(User.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+sb.append("id");
+sb.append('=');
+sb.append(((this.id == null)?"<null>":this.id));
+sb.append(',');
+sb.append("phoneNumber");
+sb.append('=');
+sb.append(((this.phoneNumber == null)?"<null>":this.phoneNumber));
+sb.append(',');
+sb.append("firstName");
+sb.append('=');
+sb.append(((this.firstName == null)?"<null>":this.firstName));
+sb.append(',');
+sb.append("lastName");
+sb.append('=');
+sb.append(((this.lastName == null)?"<null>":this.lastName));
+sb.append(',');
+sb.append("corporateName");
+sb.append('=');
+sb.append(((this.corporateName == null)?"<null>":this.corporateName));
+sb.append(',');
+sb.append("corporateId");
+sb.append('=');
+sb.append(((this.corporateId == null)?"<null>":this.corporateId));
+sb.append(',');
+sb.append("employeeId");
+sb.append('=');
+sb.append(((this.employeeId == null)?"<null>":this.employeeId));
+sb.append(',');
+sb.append("citizenId");
+sb.append('=');
+sb.append(((this.citizenId == null)?"<null>":this.citizenId));
+sb.append(',');
+sb.append("emiratesId");
+sb.append('=');
+sb.append(((this.emiratesId == null)?"<null>":this.emiratesId));
+sb.append(',');
+sb.append("nationality");
+sb.append('=');
+sb.append(((this.nationality == null)?"<null>":this.nationality));
+sb.append(',');
+sb.append("email");
+sb.append('=');
+sb.append(((this.email == null)?"<null>":this.email));
+sb.append(',');
+sb.append("deviceToken");
+sb.append('=');
+sb.append(((this.deviceToken == null)?"<null>":this.deviceToken));
+sb.append(',');
+sb.append("rmtProfileStatus");
+sb.append('=');
+sb.append(((this.rmtProfileStatus == null)?"<null>":this.rmtProfileStatus));
+sb.append(',');
+sb.append("emiratesIdStatus");
+sb.append('=');
+sb.append(((this.emiratesIdStatus == null)?"<null>":this.emiratesIdStatus));
+sb.append(',');
+sb.append("emiratesIdExpiryDate");
+sb.append('=');
+sb.append(((this.emiratesIdExpiryDate == null)?"<null>":this.emiratesIdExpiryDate));
+sb.append(',');
+sb.append("dateOfBirth");
+sb.append('=');
+sb.append(((this.dateOfBirth == null)?"<null>":this.dateOfBirth));
+sb.append(',');
+sb.append("registrationDate");
+sb.append('=');
+sb.append(((this.registrationDate == null)?"<null>":this.registrationDate));
+sb.append(',');
+sb.append("hasMoneyTransferTransactions");
+sb.append('=');
+sb.append(((this.hasMoneyTransferTransactions == null)?"<null>":this.hasMoneyTransferTransactions));
+sb.append(',');
+sb.append("hasMoneyTransferBeneficiary");
+sb.append('=');
+sb.append(((this.hasMoneyTransferBeneficiary == null)?"<null>":this.hasMoneyTransferBeneficiary));
+sb.append(',');
+sb.append("hasLocalMobileRechargeTransactions");
+sb.append('=');
+sb.append(((this.hasLocalMobileRechargeTransactions == null)?"<null>":this.hasLocalMobileRechargeTransactions));
+sb.append(',');
+sb.append("hasInternationalMobileRechargeTransactions");
+sb.append('=');
+sb.append(((this.hasInternationalMobileRechargeTransactions == null)?"<null>":this.hasInternationalMobileRechargeTransactions));
+sb.append(',');
+sb.append("requiresPasswordReset");
+sb.append('=');
+sb.append(((this.requiresPasswordReset == null)?"<null>":this.requiresPasswordReset));
+sb.append(',');
+sb.append("cardPlasticType");
+sb.append('=');
+sb.append(((this.cardPlasticType == null)?"<null>":this.cardPlasticType));
+sb.append(',');
+sb.append("atmPinPopupEnabled");
+sb.append('=');
+sb.append(((this.atmPinPopupEnabled == null)?"<null>":this.atmPinPopupEnabled));
+sb.append(',');
+sb.append("atmPinBlockEndDate");
+sb.append('=');
+sb.append(((this.atmPinBlockEndDate == null)?"<null>":this.atmPinBlockEndDate));
+sb.append(',');
+sb.append("moneyTransferVideoURL");
+sb.append('=');
+sb.append(((this.moneyTransferVideoURL == null)?"<null>":this.moneyTransferVideoURL));
+sb.append(',');
+sb.append("moneyTransferVideoThumbnailURL");
+sb.append('=');
+sb.append(((this.moneyTransferVideoThumbnailURL == null)?"<null>":this.moneyTransferVideoThumbnailURL));
+sb.append(',');
+sb.append("billPaymentVideoURL");
+sb.append('=');
+sb.append(((this.billPaymentVideoURL == null)?"<null>":this.billPaymentVideoURL));
+sb.append(',');
+sb.append("billPaymentVideoThumbnailURL");
+sb.append('=');
+sb.append(((this.billPaymentVideoThumbnailURL == null)?"<null>":this.billPaymentVideoThumbnailURL));
+sb.append(',');
+sb.append("referralProgramVideoURL");
+sb.append('=');
+sb.append(((this.referralProgramVideoURL == null)?"<null>":this.referralProgramVideoURL));
+sb.append(',');
+sb.append("referralProgramVideoThumbnailURL");
+sb.append('=');
+sb.append(((this.referralProgramVideoThumbnailURL == null)?"<null>":this.referralProgramVideoThumbnailURL));
+sb.append(',');
+sb.append("referralCode");
+sb.append('=');
+sb.append(((this.referralCode == null)?"<null>":this.referralCode));
+sb.append(',');
+sb.append("rewardedForReferral");
+sb.append('=');
+sb.append(((this.rewardedForReferral == null)?"<null>":this.rewardedForReferral));
+sb.append(',');
+sb.append("moneyTransferReferralCount");
+sb.append('=');
+sb.append(((this.moneyTransferReferralCount == null)?"<null>":this.moneyTransferReferralCount));
+sb.append(',');
+sb.append("passportStatus");
+sb.append('=');
+sb.append(((this.passportStatus == null)?"<null>":this.passportStatus));
+sb.append(',');
+sb.append("isVerified");
+sb.append('=');
+sb.append(((this.isVerified == null)?"<null>":this.isVerified));
+sb.append(',');
+sb.append("spendPolicyDetails");
+sb.append('=');
+sb.append(((this.spendPolicyDetails == null)?"<null>":this.spendPolicyDetails));
+sb.append(',');
+sb.append("autoplayMoneyTransferVideo");
+sb.append('=');
+sb.append(((this.autoplayMoneyTransferVideo == null)?"<null>":this.autoplayMoneyTransferVideo));
+sb.append(',');
+sb.append("additionalProperties");
+sb.append('=');
+sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
+sb.append(',');
+if (sb.charAt((sb.length()- 1)) == ',') {
+sb.setCharAt((sb.length()- 1), ']');
+} else {
+sb.append(']');
+}
+return sb.toString();
 }
 
 }

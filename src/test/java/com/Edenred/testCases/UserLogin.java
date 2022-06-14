@@ -24,6 +24,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import com.Edenred.utilities.AccessToken;
+import com.Edenred.utilities.ExtentListeners;
 import com.Edenred.utilities.FunctionalUtil;
 import com.Edenred.utilities.RestApi;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -33,6 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Test
+@Listeners(ExtentListeners.class)
 public class UserLogin extends TestBase{
 
 	RequestSpecification httpRequest;

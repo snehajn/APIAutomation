@@ -86,7 +86,7 @@ public class RestApi {
 					.when()			
 					.get()
 				
-					.then().assertThat().statusCode(200).extract().response();
+					.then().extract().response();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

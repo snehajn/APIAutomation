@@ -7,9 +7,12 @@ import com.Edenred.utilities.AccessToken;
 import com.Edenred.utilities.FunctionalUtil;
 import com.Edenred.utilities.RestApi;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.CodeLanguage;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonSerializer;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -18,12 +21,12 @@ import io.restassured.specification.RequestSpecification;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+import com.relevantcodes.extentreports.LogStatus;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
+import com.aventstack.extentreports.model.Log;
 import com.Edenred.Objects.APIEndPoint;
 import com.Edenred.Objects.Beneficiary;
 import com.Edenred.Objects.FConstants;
@@ -32,7 +35,7 @@ import com.Edenred.Objects.User;
 import com.Edenred.base.TestBase;
 
 
-public class TC_Money_Transfer_Happy extends TestBase {
+public class TC02_Money_Transfer_CashPickUp extends TestBase {
 	
 	User user;
 	String UserID;
@@ -47,9 +50,13 @@ public class TC_Money_Transfer_Happy extends TestBase {
 	
 		
 	@Test
-	public void TC01MoneyTransfer_BankTransfer() throws InterruptedException, IOException {
+	public void TC02_Money_Transfer_CashPickUp ()  throws InterruptedException, IOException {
 	
 		//Generate token
+		//logger.info("********* TC01MoneyTransfer_BankTransfer  **********");
+		
+		reportLog("User login  API--------------");
+
 		generateToken(LoginCred.user2);
 		Money_Transfer M= new Money_Transfer(LoginCred.user2);
 		UserLogin login =new UserLogin (LoginCred.user2);
@@ -57,17 +64,21 @@ public class TC_Money_Transfer_Happy extends TestBase {
 		//get User Pojo
 		user=login.GetUserpojo();
 		UserID =user.getId();
+		reportLog(user.toString());
+		test.log(LogStatus.INFO,(Throwable) (MarkupHelper.createCodeBlock(user.toString(), CodeLanguage.JSON)));
 		
-		
-	    	
+	    	 
 	  
 		try {
 			//Get the list of beneficiaries
 			
-			
+				
+			  reportLog("Get Existing beneficiary List API ------");
+			  
 			  Beneficiary[] benList=M.Get_Beneficiary_BankTransfer_Pojo(UserID);
 		      //First Beneficiary 
 			  Beneficiary ben1=benList[0];
+			  reportLog(ben1.toString());
 			  
 			  System.out.println("beneficiary's Country code  "+ben1.getCountry());
 		
@@ -75,35 +86,37 @@ public class TC_Money_Transfer_Happy extends TestBase {
 			
 			
 			
-				
+			  	reportLog("Checking the eligibility API ------");
 				//Check eligibility
-				Response elgiresponse=M.get_eligibility(UserID,FConstants.BankTransfer,countryCode,"25");
+				Response elgiresponse=M.get_eligibility(UserID,FConstants.Cashpickup,FConstants.PakistanCode,"200.00");
 				System.out.println("eligibility"+elgiresponse.getBody().asString());
 				if (elgiresponse.getBody().asString().equalsIgnoreCase("true")){
 					
-					//if(countryCode.equalsIgnoreCase(BD)) {
-					Response Fxresponse=M.get_Fxrates(UserID,"BDT" ,"25",FConstants.BankTransfer);
+					//FX rate API
+
+
+				  	reportLog("Get Fxrates API------");
+					Response Fxresponse=M.get_Fxrates(UserID,FConstants.PakistanCurrency ,"200",FConstants.Cashpickup);
 				
-				
-					
-					
 					System.out.println("FX FXrate  " +Fxresponse.path("fxRates.fxRate").toString());
 					ArrayList<Float> Fxrate= new <Float>ArrayList();
 					Fxrate =Fxresponse.path("fxRates.fxRate");
-				
+					 reportLog(Fxresponse.getBody().asString());
+					  
+					
+					
 					System.out.println("totalFeeAmount " +Fxresponse.path("fxRates.totalFeeAmount").toString());
 					ArrayList<Float> totalFeeAmount= new <Float>ArrayList();
 					totalFeeAmount =Fxresponse.path("fxRates.totalFeeAmount");
 				
 					
+
+				  	reportLog("Send Money API------");
+					//Send Money API
+					Response Transferresponse=M.SendMoney(FConstants.Cashpickup,Fxrate.get(0),totalFeeAmount.get(0),FConstants.PakistanCurrency,ben1.getId());
 					
-				
-				
-				
-					Response Transferresponse=M.SendMoney(FConstants.BankTransfer,Fxrate.get(0),totalFeeAmount.get(0),"BDT",ben1.getId());
-					
-					String Transactio_ID=Transferresponse.getBody().jsonPath().get("id").toString();
-					System.out.println("Transaction was successful and the Transaction ID  " +Transactio_ID);
+					//String Transactio_ID=Transferresponse.getBody().jsonPath().get("id").toString();
+					//System.out.println("Transaction was successful and the Transaction ID  " +Transactio_ID);
 					
 					
 				}

@@ -12,6 +12,9 @@ public class FConstants {
 	 public static final String PakistanCurrency = "PKR";
 	 public static final String PhillipinesCurrency = "PHP";
 	 public static final String BankTransfer = "BANKTRANSFER";
+	 public static final String Cashpickup = "CASHPICKUP";
+	 
+	 public static final String PakistanCode = "PK";
 	 public static  String Token ;
 	 
 	 public static Map currency = new HashMap();
