@@ -45,7 +45,7 @@ public class Money_Transfer extends TestBase{
 	
 	public Money_Transfer(LoginCred user){
 		
-		generateToken(LoginCred.user2);
+		generateToken(user);
 		
 		
 	}
@@ -66,7 +66,7 @@ public class Money_Transfer extends TestBase{
 		
 	}
 	@Test
-public  Beneficiary[] Get_Beneficiary_BankTransfer_Pojo(String UserID) throws InterruptedException, JsonParseException, JsonMappingException, IOException {
+public  Beneficiary[] Get_Beneficiary_BankTransfer_Pojo(String UserID, String TransferMethod) throws InterruptedException, JsonParseException, JsonMappingException, IOException {
 		
 		Beneficiary ben1 =new Beneficiary();
 		//List<Beneficiary> benelist =new <Beneficiary>ArrayList();
@@ -76,7 +76,7 @@ public  Beneficiary[] Get_Beneficiary_BankTransfer_Pojo(String UserID) throws In
 		requestSpecification.setAccept("text/plain");
 		requestSpecification.addHeader("Authorization","Bearer " + FConstants.Token);
 		requestSpecification.addPathParam("userId", UserID);
-		requestSpecification.addQueryParam("transferMethod", "BANKTRANSFER");
+		requestSpecification.addQueryParam("transferMethod", TransferMethod);
 		
 		Response response1 = RestApi.get(requestSpecification);
 		System.out.println("response beneficiau"+response1.getBody().asString());
@@ -138,33 +138,37 @@ public  Beneficiary[] Get_Beneficiary_BankTransfer_Pojo(String UserID) throws In
 	
 	public Response SendMoney(String transferMethod,float transferrate,float fee,String ReceiverCurrency,String BeneficiaryID) throws InterruptedException, IOException {
 		
-		/*
-		 * { "beneficiaryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "sendAmount": {
-		 * "amount": 0, "currency": "string" }, "receiveAmount": { "amount": 0,
-		 * "currency": "string" }, "conversionRate": 0, "feeAmount": 0, "referralCode":
-		 * "string" }
-		 */
-		
-		//Payload Request 
-
-		String Samplejsn="{\r\n"
-				+ "  \"beneficiaryId\":\"d72385bd-d4df-ec11-b656-0050f2f182b8\",\r\n"
-				+ "  \"sendAmount\": {\r\n"
-				+ "    \"amount\": 200,\r\n"
-				+ "    \"currency\": \"AED\"\r\n"
-				+ "  },\r\n"
-				+ "  \"receiveAmount\": {\r\n"
-				+ "    \"amount\": 200,\r\n"
-				+ "    \"currency\": \"INR\"\r\n"
-				+ "  },\r\n"
-				+ "  \"conversionRate\": 20.5,\r\n"
-				+ "  \"feeAmount\": 0,\r\n"
-				+ "  \"referralCode\": \"ff\"\r\n"
-				+ "}";
-		
 		RequestSpecBuilder requestSpecification3 = new RequestSpecBuilder();
 		Response response3;
+		String jsonArrayAsString="";
 		ObjectMapper objectMapper = new ObjectMapper();
+		
+		if(transferMethod.equalsIgnoreCase(FConstants.DirectTransfer)) {
+			
+			
+			//Payload creation
+			// Create an array which will hold two JSON objects
+			ArrayNode parentArray =  objectMapper.createArrayNode();
+			
+			// Creating Node that maps to JSON Object structures in JSON content
+			ObjectNode Jsonnode = objectMapper.createObjectNode();
+			
+			Jsonnode.put("beneficiaryId", BeneficiaryID);
+			ObjectNode sendAmount = objectMapper.createObjectNode();
+			sendAmount.put("amount", 25);
+			Jsonnode.set("sendAmount", sendAmount);
+			parentArray.add(Jsonnode);
+			
+
+			jsonArrayAsString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(Jsonnode);
+			System.out.println("Created Json Array is : ");
+			System.out.println(Jsonnode.toString());
+	
+			
+		}
+		else if (transferMethod.equalsIgnoreCase("BankTransfer")) {
+		//Payload Request 
+	
 		
 		//Payload creation
 		// Create an array which will hold two JSON objects
@@ -190,11 +194,11 @@ public  Beneficiary[] Get_Beneficiary_BankTransfer_Pojo(String UserID) throws In
 		parentArray.add(Jsonnode);
 		
 
-		String jsonArrayAsString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(Jsonnode);
+		jsonArrayAsString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(Jsonnode);
 		System.out.println("Created Json Array is : ");
 		System.out.println(Jsonnode.toString());
 		
-		
+		}		
 		
 		
 		requestSpecification3.setBasePath(APIEndPoint.sendmoney);
@@ -211,6 +215,7 @@ public  Beneficiary[] Get_Beneficiary_BankTransfer_Pojo(String UserID) throws In
 		
 		
 	}
+ 
 	public void get_Beneficiary_DirectTransfer() throws InterruptedException, IOException {
 		
 		UserLogin userid= new UserLogin(LoginCred.User1);

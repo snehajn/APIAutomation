@@ -3,13 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Edenred.testCases.MoneyTransfer.Negative_Tests.TC_02_Get_Beneficiary">
+      <class name="com.Edenred.testCases.MoneyTransfer.TC_01_Money_Transfer_BankTransfer_Happy">
         <methods>
-          <include name="TC_02_FXRATE_Invalid_USERID"/>
+          <include name="TC01MoneyTransfer_BankTransfer"/>
           <include name="setup"/>
-          <include name="TC_03_FXRATE_AmountNotExists"/>
         </methods>
-      </class> <!-- com.Edenred.testCases.MoneyTransfer.Negative_Tests.TC_02_Get_Beneficiary -->
+      </class> <!-- com.Edenred.testCases.MoneyTransfer.TC_01_Money_Transfer_BankTransfer_Happy -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

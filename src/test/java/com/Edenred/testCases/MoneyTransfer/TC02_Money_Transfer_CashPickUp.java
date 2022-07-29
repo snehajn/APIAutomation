@@ -65,17 +65,17 @@ public class TC02_Money_Transfer_CashPickUp extends TestBase {
 		user=login.GetUserpojo();
 		UserID =user.getId();
 		reportLog(user.toString());
-		test.log(LogStatus.INFO,(Throwable) (MarkupHelper.createCodeBlock(user.toString(), CodeLanguage.JSON)));
+		
 		
 	    	 
 	  
 		try {
 			//Get the list of beneficiaries
-			
+		
 				
 			  reportLog("Get Existing beneficiary List API ------");
 			  
-			  Beneficiary[] benList=M.Get_Beneficiary_BankTransfer_Pojo(UserID);
+			  Beneficiary[] benList=M.Get_Beneficiary_BankTransfer_Pojo(UserID,FConstants.Cashpickup);
 		      //First Beneficiary 
 			  Beneficiary ben1=benList[0];
 			  reportLog(ben1.toString());

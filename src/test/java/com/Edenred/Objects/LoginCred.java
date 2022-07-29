@@ -10,6 +10,10 @@ public enum LoginCred {
 
     User1("00971545091714", "test123"),
     user2("00971545092159", "test123"),
+    
+    user3("00971545092398", "test123"),
+    user4("00971585862811/3110000007","test123")
+    
    ;
 
     private String phone;
